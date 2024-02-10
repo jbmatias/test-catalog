@@ -1,0 +1,17 @@
+.main-nav-container {
+  padding: 20px 0 0 0 !important;
+}
+
+.main-nav-container .v-field {
+  height: 40px !important;  
+  min-height: 40px;
+  box-shadow: none;
+  background-color: rgb(199, 198, 196);
+  /* box-shadow: none !important;
+  border-radius: 0 !important; */
+}
+
+.main-nav-container .v-field__input {
+  height: 40px !important;  
+  min-height: 40px;
+}
