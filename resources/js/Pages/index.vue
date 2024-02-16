@@ -1,35 +1,32 @@
-<template>
-  <v-app>
-    <v-app-bar>
-      <template v-slot:prepend>
-        <v-icon icon="$vuetify"></v-icon>
-      </template>      
-      <v-app-bar-title>{{ title }}</v-app-bar-title>
-      <v-container class="main-nav-container">
-        <v-responsive
-          mx="auto"
-          max-width="500">
-          <v-text-field
-            size="20"
-            append-inner-icon="mdi-magnify" 
-            variant="solo"
-          ></v-text-field>
-        </v-responsive>
-      </v-container>
-    </v-app-bar>
-  </v-app>
-</template>
-<style>
-@import '/resources/css/app.css';
-@import '/resources/css/index.css';
-</style>
-<script>
-export default {
-  props: {
-    title: {
-      type: String,
-      default: 'Restro POS'
-    }
-  }
-}
+<script setup>
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import MenuLayout from '@/Layouts/Menu.vue'
+import CheckOut from '@/Layouts/CheckOut.vue'
+import { Head } from '@inertiajs/vue3';
+import { ref, toRefs, watch, onMounted } from 'vue'
+
+const props = defineProps({
+    menu: {
+        type: Array        
+    }    
+});
+
+const { menu } = toRefs(props)
+
 </script>
+
+<template>
+    <Head title="Restro POS" />
+    <AuthenticatedLayout>
+        <div class="py-6">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="overflow-hidden">                    
+                    <div class="grid grid-cols-12 gap-4">
+                        <menu-layout :menu="menu"></menu-layout>
+                        <check-out></check-out>                        
+                    </div>                 
+                </div>
+            </div>            
+        </div>
+    </AuthenticatedLayout>
+</template>
